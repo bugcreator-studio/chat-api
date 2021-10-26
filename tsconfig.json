@@ -9,13 +9,34 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@*": ["/*"],
+      "@modules/*": ["modules/*"],
+      "@core/*": ["core/*"],
+      "@constants/*": ["constants/*"],
+      "@databases/*": ["databases/*"],
+      "@decorators/*": ["decorators/*"],
+      "@services/*": ["services/*"],
+      "@guards/*": ["guards/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@filters/*": ["filters/*"],
+      "@interceptors/*": ["interceptors/*"],
+      "@common/*": ["common/*"],
+      "@exceptions/*": ["exceptions/*"],
+      "@i18n/*": ["i18n/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@providers/*": ["providers/*"],
+      "@shared/*": ["shared/*"],
+      "@views/*": ["views/*"],
+      "@uploads/*": ["uploads/*"]
+    }
   }
 }
