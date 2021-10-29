@@ -37,3 +37,5 @@ lerna-debug.log*
 yarn.lock
 
 .env
+
+src/services/chat-ab0a7-firebase-adminsdk-y3t7b-9f3cfe170d.json

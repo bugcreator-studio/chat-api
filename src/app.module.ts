@@ -3,6 +3,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'snake-naming.strategy';
+import { UserModule } from './modules/user/user.module';
+import * as dotenv from 'dotenv';
+import { FirebaseAdminService } from '@services/firebase.service';
+
+dotenv.config();
 
 @Module({
   imports: [
@@ -14,12 +19,10 @@ import { SnakeNamingStrategy } from 'snake-naming.strategy';
       host: process.env.DB_HOST,
       port: +process.env.DB_PORT,
       username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
+      password: process.env.DB_PASS,
       database: process.env.DB_NAME,
       synchronize: false,
-      extra: {
-        charset: 'utf8mb4_unicode_ci',
-      },
+      extra: { charset: 'utf8mb4_unicode_ci' },
       entities: ['dist/**/*.entity{.ts,.js}'],
       subscribers: ['dist/**/*.subscriber{.ts,.js}'],
       migrations: ['dist/databases/migrations/**/*{.ts,.js}'],
@@ -28,6 +31,7 @@ import { SnakeNamingStrategy } from 'snake-naming.strategy';
       namingStrategy: new SnakeNamingStrategy(),
     }),
     AuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}

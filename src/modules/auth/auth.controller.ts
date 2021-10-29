@@ -1,17 +1,19 @@
-import { JwtAuthGuard } from '@guards/jwt-auth.guard';
-import { Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
+
+export class LoginBody {
+  firebaseToken: string;
+}
 
 @Controller('auth')
 @ApiTags('Auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly _authService: AuthService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post('login')
-  login() {
-    console.log('Login');
+  async login(@Body() firebaseToken: LoginBody) {
+    return await this._authService.login(firebaseToken.firebaseToken);
   }
 
   @Post('register')
